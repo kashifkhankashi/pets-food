@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Sparkles, Star } from "lucide-react";
-import Card from "./ui/Card";
+import { Card } from "@/components/ui/card";
 
 interface ProductCardProps {
   name: string;
@@ -31,7 +31,7 @@ export default function ProductCard({
       whileHover={{ y: -5 }}
       className="group"
     >
-      <Card hover className="overflow-hidden flex flex-col h-full relative">
+      <Card className="overflow-hidden flex flex-col h-full relative hover:shadow-lg transition-shadow duration-300">
         {/* Premium badge */}
         <div className="absolute top-4 right-4 z-10">
           <motion.div
@@ -46,12 +46,21 @@ export default function ProductCard({
         </div>
 
         {/* Image with overlay on hover */}
-        <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
+        <div className="relative h-48 overflow-hidden bg-muted">
           <Image
             src={image}
             alt={name}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-125"
+            unoptimized
+            loading="lazy"
+            onError={(e) => {
+              // Fallback to SVG placeholder if image fails to load
+              const target = e.target as HTMLImageElement;
+              if (!target.src.includes('data:image')) {
+                target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23FFA500' width='400' height='400'/%3E%3Ctext fill='%23FFFFFF' font-family='sans-serif' font-size='20' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3E${encodeURIComponent(name)}%3C/text%3E%3C/svg%3E`;
+              }
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
@@ -59,7 +68,7 @@ export default function ProductCard({
         {/* Content */}
         <div className="p-6 flex flex-col flex-grow">
           <div className="mb-2">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">
+            <h3 className="text-xl font-bold text-card-foreground mb-1 group-hover:text-primary transition-colors">
               {name}
             </h3>
             {/* Rating */}
@@ -70,23 +79,23 @@ export default function ProductCard({
                   className={`w-4 h-4 ${
                     i < rating
                       ? "fill-amber-400 text-amber-400"
-                      : "text-gray-300 dark:text-gray-600"
+                      : "text-muted-foreground/50"
                   }`}
                 />
               ))}
             </div>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow leading-relaxed">
+          <p className="text-muted-foreground text-sm mb-4 flex-grow leading-relaxed">
             {description}
           </p>
 
           {/* Price */}
-          <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="pt-4 border-t border-border">
             <span className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
               {price}
             </span>
-            <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">
+            <span className="text-xs text-muted-foreground ml-1">
               per bag
             </span>
           </div>

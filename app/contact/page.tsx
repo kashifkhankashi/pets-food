@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
-import Button from "@/components/ui/Button";
-import Card from "@/components/ui/Card";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 export default function ContactPage() {
   return (
@@ -145,7 +145,7 @@ export default function ContactPage() {
                     placeholder="Tell us more..."
                   ></textarea>
                 </div>
-                <Button size="lg" variant="primary" type="submit" className="w-full">
+                <Button size="lg" type="submit" className="w-full">
                   Send Message
                   <Send className="w-5 h-5 ml-2" />
                 </Button>

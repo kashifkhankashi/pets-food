@@ -9,7 +9,29 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
+    // Increase timeout for external images
+    minimumCacheTTL: 60,
+    // Add retry configuration
+    dangerouslyAllowSVG: false,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+  // Increase timeout for image optimization
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
   },
 };
 

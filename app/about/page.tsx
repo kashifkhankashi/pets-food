@@ -66,10 +66,17 @@ export default function AboutPage() {
             className="relative h-96 rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image
-              src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&h=600&fit=crop"
+              src="https://via.placeholder.com/800x600/FFA500/FFFFFF?text=Happy+Pet"
               alt="Happy dog"
               fill
               className="object-cover"
+              unoptimized
+              loading="lazy"
+              onError={(e) => {
+                // Fallback to a placeholder if image fails to load
+                const target = e.target as HTMLImageElement;
+                target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect fill='%23e5e7eb' width='800' height='600'/%3E%3Ctext fill='%239ca3af' font-family='sans-serif' font-size='24' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3EImage%3C/text%3E%3C/svg%3E`;
+              }}
             />
           </motion.div>
         </div>

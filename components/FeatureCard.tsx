@@ -26,12 +26,12 @@ export default function FeatureCard({
     >
       <motion.div
         whileHover={{ scale: 1.1, rotate: 5 }}
-        className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 mb-4"
+        className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4"
       >
-        <Icon className="w-8 h-8 text-amber-600 dark:text-amber-500" />
+        <Icon className="w-8 h-8 text-primary" />
       </motion.div>
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h3>
-      <p className="text-gray-600 dark:text-gray-300">{description}</p>
+      <h3 className="text-xl font-bold text-foreground mb-2">{title}</h3>
+      <p className="text-muted-foreground">{description}</p>
     </motion.div>
   );
 }

@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Heart, Shield, Award } from "lucide-react";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import CategoryCard from "@/components/CategoryCard";
 import FeatureCard from "@/components/FeatureCard";
 import ProductCard from "@/components/ProductCard";
@@ -17,7 +18,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-amber-50 via-background to-orange-50 dark:from-gray-900 dark:via-background dark:to-gray-900 pt-20">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-amber-200 dark:bg-amber-900/30 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob" />
@@ -31,7 +32,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+              className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight"
             >
               Premium Nutrition for{" "}
               <span className="bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 bg-clip-text text-transparent">
@@ -42,7 +43,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed"
+              className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed"
             >
               Crafted with love and care, our natural pet food ensures your
               furry friends live their healthiest, happiest lives.
@@ -53,12 +54,16 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              <Button size="lg" variant="primary" asLink href="/dog-food">
-                Shop Now
-                <ArrowRight className="w-5 h-5 ml-2" />
+              <Button size="lg" asChild>
+                <Link href="/dog-food">
+                  Shop Now
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" asLink href="/about">
-                Learn More
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/about">
+                  Learn More
+                </Link>
               </Button>
             </motion.div>
           </div>
@@ -74,19 +79,19 @@ export default function Home() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center"
+            className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center"
           >
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ repeat: Infinity, duration: 2 }}
-              className="w-1 h-3 bg-gray-400 rounded-full mt-2"
+              className="w-1 h-3 bg-muted-foreground rounded-full mt-2"
             />
           </motion.div>
         </motion.div>
       </section>
 
       {/* Category Showcase */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -95,10 +100,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Shop by Category
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Find the perfect nutrition for your pet
             </p>
           </motion.div>
@@ -118,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+      <section className="py-20 bg-gradient-to-b from-muted to-background">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -127,10 +132,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Why Choose Sanan Pets Foods?
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               We&apos;re committed to your pet&apos;s health and happiness
             </p>
           </motion.div>
@@ -158,7 +163,7 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -167,10 +172,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Featured Products
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Discover our most popular pet food options
             </p>
           </motion.div>
@@ -190,7 +195,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+      <section className="py-20 bg-gradient-to-b from-background to-muted">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -199,10 +204,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               What Pet Parents Say
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Real stories from happy pets and their owners
             </p>
           </motion.div>
@@ -239,9 +244,11 @@ export default function Home() {
               Join thousands of pet parents who trust Sanan Pets Foods for their
               pet&apos;s nutrition. Start your pet&apos;s journey to better health today.
             </p>
-            <Button size="lg" variant="secondary" asLink href="/dog-food">
-              Explore Products
-              <ArrowRight className="w-5 h-5 ml-2" />
+            <Button size="lg" variant="secondary" asChild>
+              <Link href="/dog-food">
+                Explore Products
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
             </Button>
           </motion.div>
         </div>
